@@ -1,0 +1,76 @@
+/* Print-specific styles */
+@layer base {
+  @media print {
+    @page {
+      size: A4;
+      margin: 1cm;
+    }
+
+    body {
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+
+    /* Prevent page breaks inside elements */
+    h2, h3 {
+      page-break-after: avoid;
+      break-after: avoid;
+    }
+
+    section {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    /* Ensure dark mode doesn't affect print */
+    * {
+      background-color: white !important;
+      color: black !important;
+      border-color: black !important;
+    }
+  }
+
+  /* PDF Export optimizations */
+  .pdf-export {
+    width: 1200px !important;
+    max-width: 1200px !important;
+    padding: 40px !important;
+    margin: 0 !important;
+    background-color: white !important;
+    color: black !important;
+  }
+
+  .pdf-export * {
+    background-color: transparent !important;
+    color: black !important;
+  }
+
+  /* Reduce spacing for PDF to fit better */
+  .pdf-export section {
+    margin-bottom: 1rem !important;
+  }
+
+  .pdf-export h2 {
+    margin-top: 1rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .pdf-export h3 {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .pdf-export p {
+    margin-bottom: 0.5rem !important;
+  }
+
+  /* Optimize spacing for lists and items */
+  .pdf-export ul, .pdf-export ol {
+    margin-top: 0.25rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .pdf-export li {
+    margin-bottom: 0.25rem !important;
+  }
+}
